@@ -1,16 +1,7 @@
 package objects.pieces;
 
-public class Piece {
-    private int id;
+import java.util.ArrayList;
 
-    public Piece(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+public interface Piece {
+    public ArrayList<String> walk(String position, String color);
 }

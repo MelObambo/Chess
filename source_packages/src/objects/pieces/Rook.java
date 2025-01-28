@@ -1,35 +1,31 @@
 package objects.pieces;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class Rook extends Piece {
-    private String name = "R";
+public class Rook implements Piece {
+    public final int id;
+    public final String name;
 
-    public Rook(int id, String name) {
-        super(id);
-        this.name = name;
+    public ArrayList<String> walk(String position, String color) {
+        ArrayList<String> available = new ArrayList<>();
+        char column = position.charAt(0);
+        int row = Character.getNumericValue(position.charAt(1));
+
+        for (char col = 'a'; col <= 'h'; col++)
+        {
+            if(col != column)
+                available.add(String.valueOf(col) + row);
+        }
+        for (int r = 1; r <= 8; r++)
+        {
+            if (r != row)
+                available.add(String.valueOf(column) + r);
+        }
+        return available;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean walk(List<Map.Entry<Character, Integer>> position, List<Map.Entry<Character, Integer>> move) {
-        Map<Character, Integer> available = new HashMap<>();
-        char column = position.getFirst().getKey();
-        int row = position.getFirst().getValue();
-        char col = 'a';
-
-        for (int i = 1; i <= 8; i++) {
-            available.put(column, i);
-            available.put(col, row);
-            col += 1;
-        }
-        if (available.containsKey(move.getFirst().getKey()) && available.containsValue(move.getFirst().getValue())) {
-            return true;
-        }
-        return false;
+    public Rook(int id) {
+        this.id = id;
+        this.name = "R";
     }
 }

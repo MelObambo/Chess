@@ -1,46 +1,42 @@
 package objects.pieces;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class King extends Piece {
-    private String name = "K";
+public class King implements Piece {
+    public final int id;
+    public final String name;
 
-    public King(int id, String name) {
-        super(id);
-        this.name = name;
-    }
+    public ArrayList<String> walk(String position, String color) {
+        ArrayList<String> available = new ArrayList<>();
+        char column = position.charAt(0);
+        int row = Character.getNumericValue(position.charAt(1));
+        char col;
+        int r;
 
-    public String getName() {
-        return name;
-    }
-
-    public boolean walk(List<Map.Entry<Character, Integer>> position, List<Map.Entry<Character, Integer>> move) {
-        Map<Character, Integer> available = new HashMap<>();
-        char columnMinus = position.getFirst().getKey();
-        char column = position.getFirst().getKey();
-        char columnPlus = position.getFirst().getKey();
-        int rowMinus = position.getFirst().getKey();
-        int row = position.getFirst().getKey();
-        int rowPlus = position.getFirst().getKey();
-        columnMinus -=1;
-        columnPlus +=1;
-        rowMinus -=1;
-        rowPlus +=1;
-        available.put(columnMinus, rowPlus);
-        available.put(column, rowPlus);
-        available.put(columnPlus, rowPlus);
-        available.put(columnMinus, row);
-        available.put(column, row);
-        available.put(columnPlus, row);
-        available.put(columnMinus, rowMinus);
-        available.put(column, rowMinus);
-        available.put(columnPlus, row);
-
-        if (available.containsKey(move.getFirst().getKey()) && available.containsKey(move.getFirst().getKey())) {
-            return true;
+        for (int i = -1; i < 2; i++){
+            col = (char) (column + i);
+            for (int j = - 1; j < 2; j++){
+                r = row + j;
+                if(col < 'a' || col > 'h' || r < 1 || r > 8 || (col == column && r == row))
+                    continue;
+                available.add(String.valueOf(col) + r);
+            }
         }
-        return false;
+
+        return available;
+    }
+
+    public King(int id) {
+        this.id = id;
+        this.name = "K";
     }
 }
+
+
+
+
+
+
+
+
+

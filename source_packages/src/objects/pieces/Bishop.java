@@ -1,34 +1,41 @@
 package objects.pieces;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class Bishop extends Piece {
-    private String name = "B";
+public class Bishop implements Piece {
+    public final int id;
+    public final String name;
 
-    public Bishop(int id, String name) {
-        super(id);
-        this.name = name;
+    public ArrayList<String> walk(String position, String color) {
+        ArrayList<String> available = new ArrayList<>();
+        char column = position.charAt(0);
+        int row = Character.getNumericValue(position.charAt(1));
+
+        for (int offset = -7; offset < 8; offset++)
+        {
+            if(offset == 0)
+                continue;
+
+            char col = (char) (offset + column);
+
+            int row1 = row + offset;
+            if(col >= 'a' && col <= 'h' && row1 >= 1 && row1 <= 8)
+                available.add(String.valueOf(col) + row1);
+        }
+        for (int offset = -7; offset < 8; offset++) {
+            if (offset == 0)
+                continue;
+
+            char col = (char) (offset + column);
+            int row2 = row - offset;
+            if (col >= 'a' && col <= 'h' && row2 >= 1 && row2 <= 8)
+                available.add(String.valueOf(col) + row2);
+        }
+        return available;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    // just have to make sure it browse every square
-    public boolean walk(List<Map.Entry<Character, Integer>> position, List<Map.Entry<Character, Integer>> move) {
-        Map<Character, Integer> available = new HashMap<>();
-        char column = position.getFirst().getKey();
-        int row = position.getFirst().getValue();
-
-        for(int i = 0; i < 8; i++){
-            available.put();
-        }
-
-        if (available.containsKey(move.getFirst().getKey()) && available.containsValue(move.getFirst().getValue())) {
-            return true;
-        }
-        return false;
+    public Bishop(int id) {
+        this.id = id;
+        this.name = "B";
     }
 }

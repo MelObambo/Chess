@@ -1,19 +1,28 @@
 package objects.pieces;
 
-import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
 
-public class Queen extends Piece {
-    private String name = "Q";
+public class Queen implements Piece {
+    public final int id;
+    public final String name;
 
-    public Queen(int id, String name) {
-        super(id);
-        this.name = name;
+    public ArrayList<String> walk(String position, String color) {
+        ArrayList<String> available = new ArrayList<>();
+        Rook rook = new Rook(3);
+        ArrayList<String> file = rook.walk(position, color);
+
+        Bishop bishop = new Bishop(3);
+        ArrayList<String> diagonal = bishop.walk(position, color);
+
+        available.addAll(file);
+        available.addAll(diagonal);
+
+        return available;
     }
 
-    public String getName() {
-        return name;
-    }
+    public Queen(int id) {
+        this.id = id;
+        this.name = "Q";
 
-    // public boolean walk(List<Map.Entry<Character, Integer>> position, List<Map.Entry<Character, Integer>> move) {}
+    }
 }
