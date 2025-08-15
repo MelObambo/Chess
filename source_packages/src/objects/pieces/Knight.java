@@ -2,11 +2,11 @@ package objects.pieces;
 
 import java.util.ArrayList;
 
-public class Knight implements Piece {
-    public final int id;
+public class Knight extends Piece {
     public final String name;
 
-    public ArrayList<String> walk(String position, String color) {
+    @Override
+    public ArrayList<String> walk(String position) {
         ArrayList<String> available = new ArrayList<>();
         char column = position.charAt(0);
         int row = Character.getNumericValue(position.charAt(1));
@@ -38,8 +38,8 @@ public class Knight implements Piece {
         return available;
     }
 
-    public Knight(int id){
-        this.id = id;
+    public Knight(int id, int color){
+        super(id, color);
         this.name = "R";
     }
 }

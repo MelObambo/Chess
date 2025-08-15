@@ -1,5 +1,3 @@
-package test;
-
 import objects.pieces.Pawn;
 import org.junit.Test;
 
@@ -10,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PawnTest {
-    Pawn pawn = new Pawn(1);
+    Pawn pawn = new Pawn(1, 0);
     ArrayList<String> moves = new ArrayList<>(Arrays.asList("b3", "b4"));
 
     ArrayList<String> moves2 = new ArrayList<>(List.of("b4"));

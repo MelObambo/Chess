@@ -2,17 +2,17 @@ package objects.pieces;
 
 import java.util.ArrayList;
 
-public class Queen implements Piece {
-    public final int id;
+public class Queen extends Piece {
     public final String name;
 
-    public ArrayList<String> walk(String position, String color) {
+    @Override
+    public ArrayList<String> walk(String position) {
         ArrayList<String> available = new ArrayList<>();
-        Rook rook = new Rook(3);
-        ArrayList<String> file = rook.walk(position, color);
+        Rook rook = new Rook(40, super.color);
+        ArrayList<String> file = rook.walk(position);
 
-        Bishop bishop = new Bishop(3);
-        ArrayList<String> diagonal = bishop.walk(position, color);
+        Bishop bishop = new Bishop(41, super.color);
+        ArrayList<String> diagonal = bishop.walk(position);
 
         available.addAll(file);
         available.addAll(diagonal);
@@ -20,8 +20,8 @@ public class Queen implements Piece {
         return available;
     }
 
-    public Queen(int id) {
-        this.id = id;
+    public Queen(int id, int color) {
+        super(id, color);
         this.name = "Q";
 
     }

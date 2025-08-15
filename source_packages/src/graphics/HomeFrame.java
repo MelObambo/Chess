@@ -8,7 +8,11 @@ public class HomeFrame {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Home");
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        JLabel label = new JLabel(
+        "Bonjour ! Voulez-vous commencer une partie ? J'espère pour vous que vous êtes meilleur que votre ami !"
+        );
         JButton play = new JButton("Play");
+        frame.add(label);
         frame.add(play);
         frame.setVisible(true);
 
