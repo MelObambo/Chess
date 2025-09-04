@@ -1,4 +1,6 @@
-import objects.pieces.King;
+import models.Board;
+import models.Colour;
+import models.pieces.King;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -7,7 +9,8 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class KingTest {
-    King king = new King(1, 0);
+    King king = new King(1, Colour.WHITE);
+    Board board = new Board();
     ArrayList<String> moves = new ArrayList<>(Arrays.asList("a1", "a2", "a3", "b1", "b3", "c1", "c2", "c3"));
     ArrayList<String> moves2 = new ArrayList<>(Arrays.asList("a1", "a2", "b2", "c1", "c2"));
     ArrayList<String> moves3 = new ArrayList<>(Arrays.asList( "a1", "a3", "b1", "b2", "b3"));
@@ -16,11 +19,11 @@ public class KingTest {
 
     @Test
     public void testMove() throws Exception {
-        assertEquals(king.walk("b2"), moves);
-        assertEquals(king.walk("b1"), moves2);
-        assertEquals(king.walk("a2"), moves3);
-        assertEquals(king.walk("b8"), moves4);
-        assertEquals(king.walk("h2"), moves5);
+        assertEquals(king.walk("b2", board.getEmptyBoard()), moves);
+        assertEquals(king.walk("b1", board.getEmptyBoard()), moves2);
+        assertEquals(king.walk("a2", board.getEmptyBoard()), moves3);
+        assertEquals(king.walk("b8", board.getEmptyBoard()), moves4);
+        assertEquals(king.walk("h2", board.getEmptyBoard()), moves5);
     }
 }
 

@@ -1,4 +1,4 @@
-import objects.Board;
+import models.Board;
 import org.junit.Test;
 
 import java.util.LinkedHashMap;

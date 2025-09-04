@@ -11,13 +11,12 @@ public class HomeFrame {
         JLabel label = new JLabel(
         "Bonjour ! Voulez-vous commencer une partie ? J'espère pour vous que vous êtes meilleur que votre ami !"
         );
-        JButton play = new JButton("Play");
+        JButton playButton = new JButton("Play");
         frame.add(label);
-        frame.add(play);
+        frame.add(playButton);
         frame.setVisible(true);
 
-        play.addActionListener(new ActionListener() {
-
+        playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 

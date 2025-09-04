@@ -1,6 +1,6 @@
 package game;
 
-import objects.pieces.Piece;
+import models.pieces.Piece;
 
 public class Move {
     private String number;

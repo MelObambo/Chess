@@ -1,13 +1,13 @@
 import graphics.BoardFrame;
-import objects.Board;
-import objects.pieces.*;
+import graphics.HomeFrame;
+import models.Board;
+
+import javax.swing.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Board board = new Board();
-        BoardFrame boardFrame = new BoardFrame();
-        System.out.println(board.getBoard());
-
+        SwingUtilities.invokeLater(HomeFrame::new);
+        SwingUtilities.invokeLater(BoardFrame::new);
     }
 }
