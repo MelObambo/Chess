@@ -66,4 +66,9 @@ public class Board {
         board.put(formerPosition, null);
         board.put(newPosition, piece);
     }
+    public void setPieceEnPassant(Piece piece, String formerPosition, String newPosition, String enPassantPawn) {
+        board.put(enPassantPawn, null);
+        setPiece(piece, formerPosition, newPosition);
+        System.out.println("last pawn: " + enPassantPawn);
+    }
 }

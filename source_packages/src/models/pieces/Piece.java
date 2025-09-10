@@ -7,9 +7,13 @@ import java.util.Map;
 
 public class Piece {
     public final int id;
-
-
     private Colour colour;
+    private boolean enPassant;
+
+    public Piece(int id, Colour colour) {
+        this.id = id;
+        this.colour = colour;
+    }
 
     public int getId() {
         return this.id;
@@ -22,8 +26,12 @@ public class Piece {
         return null;
     }
 
-    public Piece(int id, Colour colour) {
-        this.id = id;
-        this.colour = colour;
+    public boolean getEnPassant () {
+        return false;
     }
+
+    public void switchEnPassant() {
+        enPassant = false;
+    }
+
 }
